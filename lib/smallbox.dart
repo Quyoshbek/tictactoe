@@ -9,10 +9,33 @@ class SmallBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+
       width: boxsize,
       height: boxsize,
-      color: Colors.yellow,
-      child: ElevatedButton(onPressed: onPressed, child: Image.asset("assets/images/x.png")),
+      child: ElevatedButton(onPressed: onPressed, style: ElevatedButton.styleFrom(
+          primary: Colors.white,), child: _widgetforSmallBox(),),
     );
   }
+  Widget _widgetforSmallBox(){
+    Widget widget;
+    switch (boxstate){
+      case BoxState.EMPTY: {
+        widget = Container();
+        }
+      break;
+
+      case BoxState.CROSS: {
+          widget = Image.asset("assets/images/x.png");
+        }
+      break;
+
+      case BoxState.CIRCLE: {
+          widget = Image.asset("assets/images/o.png");
+        }
+      break;
+    }
+
+    return widget;
+  }
+
 }
